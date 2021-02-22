@@ -4,6 +4,8 @@ services:
     build: ./infra/apache
     volumes:
       - ./laravel:/work
+    ports:
+      - 9001:9001
 
   nginx:
     # nginxの公式イメージ（偶数が安定バージョンらしい）

@@ -22,3 +22,6 @@ COPY ./php.ini /usr/local/etc/php/php.ini
 COPY --from=composer:2.0.9 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /work
+
+# コンテナ起動時にyarn serveをバックグラウンドで実行することは可能だが、ログが見れないのが辛い…
+# CMD ["sh", "startup.sh"]
