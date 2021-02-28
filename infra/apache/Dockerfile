@@ -25,3 +25,4 @@ WORKDIR /work
 
 # コンテナ起動時にyarn serveをバックグラウンドで実行することは可能だが、ログが見れないのが辛い…
 # CMD ["sh", "startup.sh"]
+# docker-compose exec apache sh startup.sh
