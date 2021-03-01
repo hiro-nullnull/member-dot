@@ -18,10 +18,10 @@ services:
     working_dir: /work
 
   # 公式イメージをそのまま利用
-  # mysql:
-  #   build: ./infra/mysql
-  #   volumes:
-  #     - db-store:/var/lib/mysql
+  mysql:
+    build: ./infra/mysql
+    volumes:
+      - db-store:/var/lib/mysql
 
-# volumes:
-#   db-store:
+volumes:
+  db-store:

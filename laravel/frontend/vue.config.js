@@ -1,5 +1,5 @@
 module.exports = {
-  outputDir: '../public/vue',
+  outputDir: '../public/assets/vue',
   filenameHashing: false,
   configureWebpack: {
     devtool: 'source-map',
@@ -10,11 +10,6 @@ module.exports = {
     }
   },
   devServer: {
-    port: 9001,
-    proxy: {
-      '/': {
-        target: 'http://localhost:10080',
-      }
-    }
+    port: 9001
   }
 };
