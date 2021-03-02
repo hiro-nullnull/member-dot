@@ -1,1 +1,1 @@
-import { default as HelloWorld } from "./HelloWorld";
+export { default as MemberIcon } from "./MemberIcon/MemberIcon";
