@@ -13,7 +13,7 @@ export default {
   props: {
     iconNumber: {
       type: String,
-      default: "",
+      default: ""
     },
     isScale: {
       type: Boolean,
@@ -22,12 +22,12 @@ export default {
   },
   data: () => {
     return {
-      imgPath: "",
+      imgPath: ""
     };
   },
   mounted() {
     this.imgPath = `assets/img/character/${this.iconNumber}.png`;
-  },
+  }
 };
 </script>
 

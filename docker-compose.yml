@@ -1,7 +1,7 @@
 version: "3.8"
 services:
-  apache:
-    build: ./infra/apache
+  app:
+    build: ./infra/app
     volumes:
       - ./laravel:/work
     ports:
