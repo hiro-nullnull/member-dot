@@ -1,28 +1,40 @@
 .topPage {
-  h1 {
-    margin-bottom: 50px;
-    font-size: 32px;
-    text-align: center;
-  }
+    h1 {
+        margin-bottom: 50px;
+        font-weight: bold;
+        font-size: 40px;
+        text-align: center;
+    }
 }
 
 .topPage__icon {
-  text-align: center;
-  margin-bottom: 18px;
+    text-align: center;
+    margin-bottom: 18px;
 }
 
 .topPageMemberList {
-  border: 1px solid #333;
+    h2 {
+        font-size: 32px;
+        font-weight: bold;
+        border-bottom: 2px #333 solid;
+        padding-bottom: 10px;
+        margin-bottom: 14px;
+    }
+
 }
 
 .topPageMemberList__content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .topPageMemberList__contentItem {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    p {
+        text-align: center;
+    }
 }
