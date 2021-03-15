@@ -20,13 +20,10 @@ export default {
       default: false
     }
   },
-  data: () => {
+  data() {
     return {
-      imgPath: ""
+      imgPath: `assets/img/character/${this.iconNumber}.png`
     };
-  },
-  mounted() {
-    this.imgPath = `assets/img/character/${this.iconNumber}.png`;
   }
 };
 </script>
