@@ -17,4 +17,4 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/', 'topController@index')->name('top');
+Route::get('/', 'TopController@index')->name('Top');
