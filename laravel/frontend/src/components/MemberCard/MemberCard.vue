@@ -1,6 +1,6 @@
 <template>
     <div class="memberCard">
-        <vc-member-icon icon-number="dot001"></vc-member-icon>
+        <vc-member-icon :icon-number="iconNumber"></vc-member-icon>
         <p>{{ memberName }}</p>
     </div>
 </template>
