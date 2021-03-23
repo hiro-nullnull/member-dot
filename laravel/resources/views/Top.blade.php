@@ -1,21 +1,28 @@
 @extends('Base')
 
 @section('body')
-<div class="topPage">
-    <p class="topPage__icon"><i class="nes-octocat animate"></i></p>
-    <h1>ゆかい な なかま たち</h1>
+    <div class="topPage">
+        <p class="topPage__icon"><i class="nes-octocat animate"></i></p>
+        <h1>ゆかい な なかま たち</h1>
 
-    {{-- メンバーリスト --}}
-    <section class="topPageMemberList">
-        <h2>なかま</h2>
-        <div class="topPageMemberList__content">
-            <div class="topPageMemberList__contentItem">
-                @foreach($memberList as $member)
-                    <vc-member-icon icon-number="dot001"></vc-member-icon>
-                    <p>{{$member->name}}</p>
+        {{-- メンバーリスト --}}
+        <section class="topPageMemberList">
+            <h2><i class="nes-icon coin is-large"></i>しょうかい</h2>
+
+            <ul>
+                @foreach($memberList as $key => $values)
+                    <li class="topPageMemberList_column nes-container with-title">
+                        <p class="title topPageMemberList__title">@lang('views.pages.top.member_titles.' . $key)</p>
+                        <div class="topPageMemberList__content">
+                            @foreach($values as $member)
+                                <div class="topPageMemberList__contentItem">
+                                    <vc-member-card icon-number="dot001" member-name="{{ $member->name }}"></vc-member-card>
+                                </div>
+                            @endforeach
+                        </div>
+                    </li>
                 @endforeach
-            </div>
-        </div>
-    </section>
-</div>
+            </ul>
+        </section>
+    </div>
 @endsection
