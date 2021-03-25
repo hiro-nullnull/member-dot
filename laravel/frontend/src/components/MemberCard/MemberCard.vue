@@ -40,6 +40,7 @@ export default {
     justify-content: space-around;
     margin: auto;
     padding: 8px;
+    border-radius: 6px;
 
     p {
         text-align: center;

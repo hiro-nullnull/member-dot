@@ -17,7 +17,7 @@
                         <div class="topPageMemberList__content">
                             @foreach($values as $member)
                                 <div class="topPageMemberList__contentItem">
-                                    <vc-member-card icon-number="{{ $member->icon_number }}" member-name="{{ $member->name }}"></vc-member-card>
+                                    <vc-member-card icon-number="{{ $member->icon_name }}" member-name="{{ $member->name }}"></vc-member-card>
                                 </div>
                             @endforeach
                         </div>

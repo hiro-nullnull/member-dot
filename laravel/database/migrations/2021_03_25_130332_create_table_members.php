@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMembersTable extends Migration
+class CreateTableMembers extends Migration
 {
     /**
      * Run the migrations.
@@ -17,10 +17,11 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->text('name');
             $table->boolean('is_top');
-            $table->text('icon_type');
+            $table->text('icon_name');
             $table->text('member_type');
             $table->longText('introduction');
-            $table->timestamp('updated_at');
+            $table->dateTime('updated_at');
+            $table->dateTime('created_at');
         });
     }
 
