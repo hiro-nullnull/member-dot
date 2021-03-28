@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "docker-serve" : "docker-compose exec app sh startup.sh",
+    "docker-serve": "docker-compose exec app sh startup.sh",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
+    "vue-axios": "^3.2.4",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

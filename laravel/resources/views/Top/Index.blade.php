@@ -1,7 +1,7 @@
 @extends('Base')
 
 @section('body')
-    <div class="topPage">
+    <main class="topPage">
         <p class="topPage__icon"><i class="nes-octocat animate"></i></p>
         <h1>ゆかい な なかま たち</h1>
 
@@ -17,7 +17,11 @@
                         <div class="topPageMemberList__content">
                             @foreach($values as $member)
                                 <div class="topPageMemberList__contentItem">
-                                    <vc-member-card icon-number="{{ $member->icon_name }}" member-name="{{ $member->name }}"></vc-member-card>
+                                    <vc-member-card
+                                        icon-number="{{ $member->icon_name }}"
+                                        member-name="{{ $member->name }}"
+                                        member-introduction="{{ $member->introduction }}"
+                                    ></vc-member-card>
                                 </div>
                             @endforeach
                         </div>
@@ -25,5 +29,5 @@
                 @endforeach
             </ul>
         </section>
-    </div>
+    </main>
 @endsection

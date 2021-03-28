@@ -2,7 +2,10 @@
     <div class="memberIconContainer">
         <div
             class="memberIconContainer__icon"
-            :style="{ background: 'url(' + imgPath + ')' }"
+            :style="[
+                { background: 'url(' + imgPath + ')' },
+                { transform: 'translate(-50%, -50%) scale(' + scaleSize + ')' }
+            ]"
         ></div>
     </div>
 </template>
@@ -15,9 +18,9 @@ export default {
             type: String,
             default: ""
         },
-        isScale: {
-            type: Boolean,
-            default: false
+        scaleSize: {
+            type: Number,
+            default: 2.5
         }
     },
     data() {
@@ -39,7 +42,6 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(2.5);
     background: no-repeat;
     width: 20px;
     height: 30px;

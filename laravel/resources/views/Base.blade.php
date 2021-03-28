@@ -27,7 +27,7 @@
     @endif
 </head>
 
-<body>
+<body id="body">
     <div id="app" class="contentContainer">
         <div class="contentContainer__body">
             @yield('body')

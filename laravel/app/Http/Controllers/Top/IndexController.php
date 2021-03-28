@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Top;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class TopController extends Controller
+class IndexController extends Controller
 {
     public function index()
     {
@@ -14,7 +15,7 @@ class TopController extends Controller
             $memberList[$tmpMember->member_type][] = $tmpMember;
         }
 
-        return view('Top', [
+        return view('Top.Index', [
             'memberList' => $memberList
         ]);
     }

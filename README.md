@@ -4,6 +4,10 @@ dockerコンテナにログイン
 
 `docker-compose exec ${コンテナ名} sh`
 
+ローカル環境のフロント起動
+
+`docker-compose exec app sh startup.sh`
+
 MySQLにログイン
 
 `docker-compose exec mysql mysql -u root -p`

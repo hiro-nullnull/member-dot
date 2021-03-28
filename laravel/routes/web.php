@@ -17,4 +17,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/', 'TopController@index')->name('Top');
+// トップページ
+Route::get('/', 'Top\IndexController@index')->name('Top');
+
+// メンバー編集
+Route::get('/member-management', 'MemberManagement\IndexController@index')->name('MemberManagement');
