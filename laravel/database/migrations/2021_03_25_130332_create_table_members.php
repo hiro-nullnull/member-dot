@@ -20,8 +20,9 @@ class CreateTableMembers extends Migration
             $table->text('icon_name');
             $table->text('member_type');
             $table->longText('introduction');
-            $table->dateTime('updated_at');
             $table->dateTime('created_at');
+            $table->dateTime('updated_at');
+            $table->dateTime('deleted_at')->nullable();
         });
     }
 
