@@ -58,7 +58,7 @@
         <!-- 説明文の入力 -->
         <div class="nes-field addMember__formItem">
             <label class="addMember__formItemLabel" for="memberIntroduction"
-            >せつめい
+                >せつめい
             </label>
             <textarea
                 v-model="memberIntroduction"
@@ -71,20 +71,18 @@
         <!-- メンバーの種類選択 -->
         <div class="addMember__formItem">
             <label class="addMember__formItemLabel" for="default_select"
-            >ぶんるい</label
+                >ぶんるい</label
             >
             <div class="nes-select">
                 <select v-model="memberType" required id="default_select">
                     <option value="" disabled selected hidden
-                    >えらぶのだ. . .
+                        >えらぶのだ. . .
                     </option>
                     <option
-                        v-for="(typeValue,
-                        typeKey,
-                        index) in memberTypeList"
+                        v-for="(typeValue, typeKey, index) in memberTypeList"
                         :value="typeKey"
                         :key="index"
-                    >{{ typeValue }}
+                        >{{ typeValue }}
                     </option>
                 </select>
             </div>
@@ -169,7 +167,6 @@ export default {
                 .post(url, requestData)
                 .then(res => {
                     this.message = res.data.data.message;
-                    console.log('res', res);
                     if (res.data.status === 0) {
                         this.resetData();
                     } else {
