@@ -8,7 +8,7 @@
     <div
         v-if="isShowDialog"
         class="memberCardDialog"
-        @click="closeDialog"
+        @click="closeDialogOutsideContainer"
         data-dialog-background
     >
         <div class="memberCardDialog__container">

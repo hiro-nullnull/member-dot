@@ -10,7 +10,7 @@ dockerコンテナにログイン
 
 MySQLにログイン
 
-`docker-compose exec mysql mysql -u root -p`
+`docker-compose exec mysql mysql -u root -p welcome`
 
 dockerのイメージやボリュームを全て破棄
 

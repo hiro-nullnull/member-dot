@@ -8,7 +8,7 @@
     <title>メンバー紹介</title>
 
     <!-- nes.css -->
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
 
     <style>
         @font-face {
@@ -22,26 +22,26 @@
     </style>
 
     @if(env('APP_ENV') !== 'local')
-    <link rel="stylesheet" href="assets/vue/css/app.css">
-    </link>
+        <link rel="stylesheet" href="assets/vue/css/app.css">
+        </link>
     @endif
 </head>
 
 <body id="body">
-    <div id="app" class="contentContainer">
-        <div class="contentContainer__body">
-            @yield('body')
-        </div>
+<div id="app" class="contentContainer">
+    <div class="contentContainer__body">
+        @yield('body')
     </div>
+</div>
 
 
-    @if (env('APP_ENV') === 'local')
-    <script type="text/javascript" src="{{ $_SERVER['APP_URL'] }}:9001/js/chunk-vendors.js"></script>
+@if (env('APP_ENV') === 'local')
+    <script type="text/javascript" src="http://localhost:9001/js/chunk-vendors.js"></script>
     <script type="text/javascript" src="http://localhost:9001/js/app.js"></script>
-    @else
+@else
     <script type="text/javascript" src="assets/vue/js/app.js"></script>
     <script type="text/javascript" src="assets/vue/js/chunk-vendors.js"></script>
-    @endif
+@endif
 </body>
 
 </html>

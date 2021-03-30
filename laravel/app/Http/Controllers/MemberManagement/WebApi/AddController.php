@@ -4,16 +4,19 @@
 namespace App\Http\Controllers\MemberManagement\WebApi;
 
 
+use App\Http\Controllers\WebApi;
 use App\Http\Model\Entity\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class AddController
 {
-    public function __invoke(Request $request) {
+    use WebApi;
+
+    public function index(Request $request)
+    {
         if ($request->getMethod() !== Request::METHOD_POST) {
             throw new BadRequestException();
         }
@@ -28,8 +31,8 @@ class AddController
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 'failed'
+            return $this->faliure([
+                'message' => 'ふぉーむをうめて'
             ]);
         }
 
@@ -52,8 +55,8 @@ class AddController
         $member->deleted_at = null;
         $member->save();
 
-        return response()->json([
-            'status' => 'success'
+        return $this->success([
+            'message' => 'ふやしたよ'
         ]);
     }
 }

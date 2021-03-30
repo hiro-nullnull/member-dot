@@ -8,5 +8,11 @@
         <section>
             <vc-member-operation></vc-member-operation>
         </section>
+
+        <!-- 戻るリンク -->
+        <div class="memberManagement_backLink">
+            <i class="nes-mario"></i>
+            <a href="/">もどる</a>
+        </div>
     </div>
 @endsection

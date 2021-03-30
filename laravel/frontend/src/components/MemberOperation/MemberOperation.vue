@@ -39,11 +39,6 @@
             <delete-member></delete-member>
         </div>
     </section>
-
-    <!-- 戻るボタン -->
-    <div>
-        <a>もどる</a>
-    </div>
 </template>
 <script>
 import _AddMember from "@/components/MemberOperation/_AddMember";

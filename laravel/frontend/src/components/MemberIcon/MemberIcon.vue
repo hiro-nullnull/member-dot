@@ -3,7 +3,7 @@
         <div
             class="memberIconContainer__icon"
             :style="[
-                { background: 'url(' + imgPath + ')' },
+                { background: 'url(' + getImagePath + ')' },
                 { transform: 'translate(-50%, -50%) scale(' + scaleSize + ')' }
             ]"
         ></div>
@@ -23,10 +23,10 @@ export default {
             default: 2.5
         }
     },
-    data() {
-        return {
-            imgPath: `assets/img/character/${this.iconNumber}.png`
-        };
+    computed: {
+        getImagePath() {
+            return `assets/img/character/${this.iconNumber}.png`;
+        }
     }
 };
 </script>

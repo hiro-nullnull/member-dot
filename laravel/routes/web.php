@@ -22,3 +22,6 @@ Route::get('/', 'Top\IndexController@index')->name('Top');
 
 // メンバー編集
 Route::get('/member-management', 'MemberManagement\IndexController@index')->name('MemberManagement');
+Route::post('/member-management/web-api/add', 'MemberManagement\WebApi\AddController@index')->name('AddMember');
+Route::put('/member-management/web-api/edit', 'MemberManagement\WebApi\EditController@index')->name('EditMember');
+Route::put('/member-management/web-api/delete', 'MemberManagement\WebApi\DeleteController@index')->name('DeleteMember');
