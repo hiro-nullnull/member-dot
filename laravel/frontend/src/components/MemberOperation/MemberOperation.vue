@@ -1,5 +1,5 @@
 <template>
-    <!-- パスワード入力画面 TODO コンポーネント作成 -->
+    <!-- パスワード入力画面 -->
     <div>
         えらばれしものかしょうめいしなさい
     </div>
@@ -56,6 +56,10 @@ export default {
         memberList: {
             type: Object,
             default: () => {}
+        },
+        password: {
+            type: String,
+            default: ""
         }
     },
     data() {

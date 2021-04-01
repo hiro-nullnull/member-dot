@@ -8,6 +8,7 @@
         <section>
             <vc-member-operation
                 :member-list="{{ json_encode($memberList) }}"
+                password="{{ env('MANAGEMENT_PASS') }}"
             ></vc-member-operation>
         </section>
 
