@@ -48,10 +48,7 @@
                     :icon-number="selectedMember.icon_name"
                 ></vc-member-icon>
 
-                <div
-                    v-if="!isEdited"
-                    class="editMember__editDialogBodyButtons"
-                >
+                <div v-if="!isEdited" class="editMember__editDialogBodyButtons">
                     <button
                         @click="isShowEditDialog = false"
                         type="button"
