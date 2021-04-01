@@ -13,10 +13,10 @@
                 {{-- 12~ からはインターン --}}
                 @foreach($memberList as $key => $values)
                     <li class="topPageMemberList_column nes-container with-title">
-                        <p class="title topPageMemberList__title">@lang('views.pages.top.member_titles.' . $key)</p>
-                        <div class="topPageMemberList__content">
+                        <p class="title topPageMemberList__listTitle">@lang('views.pages.top.member_titles.' . $key)</p>
+                        <div class="topPageMemberList__listContent">
                             @foreach($values as $member)
-                                <div class="topPageMemberList__contentItem">
+                                <div class="topPageMemberList__listContentItem">
                                     <vc-member-card
                                         icon-number="{{ $member->icon_name }}"
                                         member-name="{{ $member->name }}"

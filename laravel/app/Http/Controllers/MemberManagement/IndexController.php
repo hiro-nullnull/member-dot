@@ -4,10 +4,27 @@
 namespace App\Http\Controllers\MemberManagement;
 
 
+use App\Http\Model\Entity\Member;
+
 class IndexController
 {
     public function index()
     {
-        return view('MemberManagement.Index');
+        $memberList = [];
+        $tmpMemberList = Member::query()->whereNull('deleted_at')->orderByDesc('created_at')->get();
+
+        $memberList[Member::MEMBER_TYPE_EMPLOYEE] = $tmpMemberList->filter(function ($member) {
+            return $member->member_type === Member::MEMBER_TYPE_EMPLOYEE;
+        });
+        $memberList[Member::MEMBER_TYPE_INTERN] = $tmpMemberList->filter(function ($member) {
+            return $member->member_type === Member::MEMBER_TYPE_INTERN;
+        });
+        $memberList[Member::MEMBER_TYPE_OUTSOURCING] = $tmpMemberList->filter(function ($member) {
+            return $member->member_type === Member::MEMBER_TYPE_OUTSOURCING;
+        });
+
+        return view('MemberManagement.Index', [
+            'memberList' => $memberList
+        ]);
     }
 }

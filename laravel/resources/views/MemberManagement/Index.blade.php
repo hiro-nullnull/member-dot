@@ -6,7 +6,9 @@
         <h1>？？？ が なかま に なりたそう に こちら を みている</h1>
 
         <section>
-            <vc-member-operation></vc-member-operation>
+            <vc-member-operation
+                :member-list="{{ json_encode($memberList) }}"
+            ></vc-member-operation>
         </section>
 
         <!-- 戻るリンク -->

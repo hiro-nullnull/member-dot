@@ -10,7 +10,12 @@
 
 <script>
 export default {
-    props: {},
+    props: {
+        memberList: {
+            type: Array,
+            default: () => {}
+        }
+    },
     data() {
         return {};
     }

@@ -33,13 +33,13 @@
 .topPageMemberList_column {
     margin: 40px;
 
-    &.nes-container.with-title>.topPageMemberList__title {
+    &.nes-container.with-title>.topPageMemberList__listTitle {
         font-size: 24px;
         background-color: #f7ebd7;
     }
 }
 
-.topPageMemberList__content {
+.topPageMemberList__listContent {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -48,7 +48,7 @@
     margin-bottom: 64px;
 }
 
-.topPageMemberList__contentItem {
+.topPageMemberList__listContentItem {
     max-width: 33.3%;
     width: 100%;
     margin-bottom: 8px;

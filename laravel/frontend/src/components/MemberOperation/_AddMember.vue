@@ -239,6 +239,7 @@ export default {
     flex-wrap: wrap;
     background-color: white;
     max-width: 600px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .addMember__iconDialogIconBox {

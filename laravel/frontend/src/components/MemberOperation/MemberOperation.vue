@@ -33,10 +33,10 @@
             <add-member></add-member>
         </div>
         <div v-if="selectedOperation === 'edit'">
-            <edit-member></edit-member>
+            <edit-member :member-list="memberList"></edit-member>
         </div>
         <div v-if="selectedOperation === 'delete'">
-            <delete-member></delete-member>
+            <delete-member :member-list="memberList"></delete-member>
         </div>
     </section>
 </template>
@@ -52,7 +52,12 @@ export default {
         "delete-member": _DeleteMember,
         "edit-member": _EditMember
     },
-    props: {},
+    props: {
+        memberList: {
+            type: Array,
+            default: () => {}
+        }
+    },
     data() {
         return {
             operationList: {
@@ -60,7 +65,7 @@ export default {
                 edit: "かえる",
                 delete: "けす"
             },
-            selectedOperation: "add"
+            selectedOperation: "delete"
         };
     }
 };
