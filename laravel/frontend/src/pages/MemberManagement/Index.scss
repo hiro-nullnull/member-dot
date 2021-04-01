@@ -8,13 +8,14 @@
 }
 
 .memberManagement_backLink {
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 
-    * {
-        vertical-align: middle;
-    }
-    a {
-        padding-left: 8px;
+    p {
+        margin-bottom: 16px;
         font-size: 24px;
     }
 }

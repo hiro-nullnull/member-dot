@@ -22,12 +22,13 @@
             <p class="memberCardDialog__memberIntroduction">
                 {{ memberIntroduction }}
             </p>
-            <span
-                class="memberCardDialog__closeButton"
+            <button
                 @click="closeDialogInContainer()"
+                type="button"
+                class="nes-btn memberCardDialog__closeButton"
             >
                 とじる
-            </span>
+            </button>
         </div>
     </div>
 </template>
@@ -140,15 +141,7 @@ export default {
 }
 
 .memberCardDialog__closeButton {
-    display: block;
-    width: 120px;
-    padding: 8px;
-    border: 1px solid #666;
-    text-align: center;
+    max-width: 120px;
     margin: auto;
-
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.2);
-    }
 }
 </style>

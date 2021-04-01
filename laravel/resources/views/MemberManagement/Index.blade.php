@@ -13,8 +13,8 @@
 
         <!-- 戻るリンク -->
         <div class="memberManagement_backLink">
-            <i class="nes-mario"></i>
-            <a href="/">もどる</a>
+            <p><a href="/">もどる</a></p>
+            <i class="nes-pokeball"></i>
         </div>
     </div>
 @endsection

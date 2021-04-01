@@ -1,5 +1,5 @@
 <template>
-    <!-- パスワード入力画面 -->
+    <!-- パスワード入力画面 TODO コンポーネント作成 -->
     <div>
         えらばれしものかしょうめいしなさい
     </div>
@@ -54,7 +54,7 @@ export default {
     },
     props: {
         memberList: {
-            type: Array,
+            type: Object,
             default: () => {}
         }
     },
@@ -65,7 +65,7 @@ export default {
                 edit: "かえる",
                 delete: "けす"
             },
-            selectedOperation: "delete"
+            selectedOperation: "edit"
         };
     }
 };

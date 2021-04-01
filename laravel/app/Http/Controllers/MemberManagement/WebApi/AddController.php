@@ -7,7 +7,6 @@ namespace App\Http\Controllers\MemberManagement\WebApi;
 use App\Http\Controllers\WebApi;
 use App\Http\Model\Entity\Member;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
@@ -24,7 +23,6 @@ class AddController
         // 必須パラメーターのバリデーション
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:20',
-            'isTop' => 'required|boolean',
             'iconName' => 'required|string',
             'memberType' => 'required|string',
             'introduction' => 'required|string',
@@ -37,7 +35,6 @@ class AddController
         }
 
         $name = $request->input('name');
-        $isTop = $request->input('isTop');
         $iconName = $request->input('iconName');
         $memberType = $request->input('memberType');
         $introduction = $request->input('introduction');
@@ -46,12 +43,11 @@ class AddController
         /** @var Member $member */
         $member = new Member();
         $member->name = $name;
-        $member->is_top = $isTop;
         $member->icon_name = $iconName;
         $member->member_type = $memberType;
         $member->introduction = $introduction;
-        $member->created_at = Date::now()->toDateString();
-        $member->updated_at = Date::now()->toDateString();
+        $member->created_at = now();
+        $member->updated_at = now();
         $member->deleted_at = null;
         $member->save();
 

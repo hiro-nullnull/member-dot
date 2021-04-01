@@ -16,7 +16,6 @@ class CreateTableMembers extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->boolean('is_top');
             $table->text('icon_name');
             $table->text('member_type');
             $table->longText('introduction');

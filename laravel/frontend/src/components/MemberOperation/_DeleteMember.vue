@@ -1,13 +1,20 @@
 <template>
     <div class="deleteMember">
+        <h2 class="deleteMember__title">ひと けす</h2>
+
         <!-- メンバー一覧 -->
         <ul>
-            <template v-for="(members, index) in memberList" :key="index">
+            <template
+                v-for="(members, index) in displayMemberList"
+                :key="index"
+            >
                 <li
                     v-if="Object.keys(members).length > 0"
                     class="nes-container with-title deleteMember_column"
                 >
-                    <p class="title deleteMember__listTitle">{{ index }}</p>
+                    <p class="title deleteMember__listTitle">
+                        {{ columnTitles[index] }}
+                    </p>
                     <div class="deleteMember__listContent">
                         <div
                             v-for="(member, index) in members"
@@ -88,7 +95,7 @@
 export default {
     props: {
         memberList: {
-            type: Array,
+            type: Object,
             default: () => {}
         }
     },
@@ -100,7 +107,12 @@ export default {
             isDeleted: false,
             selectedMemberIconName: "",
             message: "",
-            displayMemberList: this.memberList
+            displayMemberList: this.memberList,
+            columnTitles: {
+                employee: "しゃいん",
+                intern: "いんたーん",
+                outsourcing: "がいぶいたく"
+            }
         };
     },
     methods: {
@@ -171,8 +183,15 @@ export default {
     }
 }
 
+.deleteMember__title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+    background-color: #f7ebd7;
+}
+
 .deleteMember_column {
-    margin: 40px;
+    margin: 0 40px 40px 40px;
 
     &.nes-container.with-title > .deleteMember__listTitle {
         font-size: 24px;

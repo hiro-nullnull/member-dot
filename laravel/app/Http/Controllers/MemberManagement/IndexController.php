@@ -11,7 +11,7 @@ class IndexController
     public function index()
     {
         $memberList = [];
-        $tmpMemberList = Member::query()->whereNull('deleted_at')->orderByDesc('created_at')->get();
+        $tmpMemberList = Member::query()->whereNull('deleted_at')->orderBy('id')->get();
 
         $memberList[Member::MEMBER_TYPE_EMPLOYEE] = $tmpMemberList->filter(function ($member) {
             return $member->member_type === Member::MEMBER_TYPE_EMPLOYEE;

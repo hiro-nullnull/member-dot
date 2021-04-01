@@ -1,129 +1,120 @@
 <template>
-    <div class="addMember nes-container with-title">
-        <h2 class="title addMember__title">ひと ふやす</h2>
+    <div class="addMember">
+        <h2 class="addMember__title">ひと ふやす</h2>
 
-        <!-- アイコン選択 -->
-        <div class="addMember__formItem addMember__selectIcon">
-            <!-- 選択したアイコンを表示する領域 -->
-            <div v-if="iconName !== ''">
-                <vc-member-icon
-                    :icon-number="iconName"
-                    :scale-size="5"
-                ></vc-member-icon>
-            </div>
-            <button
-                type="button"
-                class="nes-btn"
-                @click="isShowIconDialog = true"
-            >
-                アイコンを選択する
-            </button>
+        <div class="nes-container with-title">
+            <!-- アイコン選択 -->
+            <div class="addMember__formItem addMember__selectIcon">
+                <!-- 選択したアイコンを表示する領域 -->
+                <div v-if="iconName !== ''">
+                    <vc-member-icon
+                        :icon-number="iconName"
+                        :scale-size="5"
+                    ></vc-member-icon>
+                </div>
+                <button
+                    type="button"
+                    class="nes-btn"
+                    @click="isShowIconDialog = true"
+                >
+                    アイコンを選択する
+                </button>
 
-            <!-- アイコン選択ダイアログ -->
-            <div
-                v-if="isShowIconDialog"
-                class="addMember__iconDialog"
-                @click="closeDialogOutsideBody"
-                data-dialog-background
-            >
-                <div class="addMember__iconDialogBody">
-                    <template v-for="(number, index) in 30" :key="index">
-                        <div
-                            class="addMember__iconDialogIconBox"
-                            @click="selectIcon(number)"
-                        >
-                            <vc-member-icon
-                                :icon-number="replaceIconNumber(number)"
-                            ></vc-member-icon>
-                        </div>
-                    </template>
+                <!-- アイコン選択ダイアログ -->
+                <div
+                    v-if="isShowIconDialog"
+                    class="addMember__iconDialog"
+                    @click="closeDialogOutsideBody"
+                    data-dialog-background
+                >
+                    <div class="addMember__iconDialogBody">
+                        <template v-for="(number, index) in 30" :key="index">
+                            <div
+                                class="addMember__iconDialogIconBox"
+                                @click="selectIcon(number)"
+                            >
+                                <vc-member-icon
+                                    :icon-number="replaceIconNumber(number)"
+                                ></vc-member-icon>
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- 名前の入力 -->
-        <div class="nes-field addMember__formItem">
-            <label class="addMember__formItemLabel" for="memberName">
-                なまえ
-            </label>
-            <input
-                v-model="memberName"
-                id="memberName"
-                class="nes-input"
-                type="text"
-                name="memberName"
-            />
-        </div>
-
-        <!-- 説明文の入力 -->
-        <div class="nes-field addMember__formItem">
-            <label class="addMember__formItemLabel" for="memberIntroduction"
-                >せつめい
-            </label>
-            <textarea
-                v-model="memberIntroduction"
-                id="memberIntroduction"
-                class="nes-textarea"
-                name="memberIntroduction"
-            ></textarea>
-        </div>
-
-        <!-- メンバーの種類選択 -->
-        <div class="addMember__formItem">
-            <label class="addMember__formItemLabel" for="default_select"
-                >ぶんるい</label
-            >
-            <div class="nes-select">
-                <select v-model="memberType" required id="default_select">
-                    <option value="" disabled selected hidden
-                        >えらぶのだ. . .
-                    </option>
-                    <option
-                        v-for="(typeValue, typeKey, index) in memberTypeList"
-                        :value="typeKey"
-                        :key="index"
-                        >{{ typeValue }}
-                    </option>
-                </select>
-            </div>
-        </div>
-
-        <!-- 偉い人か -->
-        <div class="addMember__formItem">
-            <label>
+            <!-- 名前の入力 -->
+            <div class="nes-field addMember__formItem">
+                <label class="addMember__formItemLabel" for="memberName">
+                    なまえ
+                </label>
                 <input
-                    v-model="isTop"
-                    type="checkbox"
-                    class="nes-checkbox"
-                    checked
+                    v-model="memberName"
+                    id="memberName"
+                    class="nes-input"
+                    type="text"
+                    name="memberName"
                 />
-                <span>えらいひと</span>
-            </label>
-        </div>
+            </div>
 
-        <!-- submit -->
-        <div class="addMember__formItem">
-            <button
+            <!-- 説明文の入力 -->
+            <div class="nes-field addMember__formItem">
+                <label class="addMember__formItemLabel" for="memberIntroduction"
+                    >せつめい
+                </label>
+                <textarea
+                    v-model="memberIntroduction"
+                    id="memberIntroduction"
+                    class="nes-textarea"
+                    name="memberIntroduction"
+                ></textarea>
+            </div>
+
+            <!-- メンバーの種類選択 -->
+            <div class="addMember__formItem">
+                <label class="addMember__formItemLabel" for="default_select"
+                    >ぶんるい</label
+                >
+                <div class="nes-select">
+                    <select v-model="memberType" required id="default_select">
+                        <option value="" disabled selected hidden
+                            >えらぶのだ. . .
+                        </option>
+                        <option
+                            v-for="(typeValue,
+                            typeKey,
+                            index) in memberTypeList"
+                            :value="typeKey"
+                            :key="index"
+                            >{{ typeValue }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- submit -->
+            <div class="addMember__formItem">
+                <button
+                    :class="[
+                        'addMember__submitButton nes-btn is-primary',
+                        { 'is-disabled': isLoading }
+                    ]"
+                    type="submit"
+                    @click="onClickSubmit()"
+                >
+                    ふやす
+                </button>
+            </div>
+
+            <!-- 通信結果メッセージ -->
+            <p
                 :class="[
-                    'addMember__submitButton nes-btn is-primary',
-                    { 'is-disabled': isLoading }
+                    'addMember__message nes-text',
+                    { 'is-primary': !isError, 'is-error': isError }
                 ]"
-                type="submit"
-                @click="onClickSubmit()"
             >
-                ふやす
-            </button>
+                {{ message }}
+            </p>
         </div>
-
-        <!-- 通信結果メッセージ -->
-        <p
-            :class="[
-                'addMember__message nes-text',
-                { 'is-primary': !isError, 'is-error': isError }
-            ]"
-        >
-            {{ message }}
-        </p>
     </div>
 </template>
 
@@ -140,7 +131,6 @@ export default {
             memberName: "",
             memberIntroduction: "",
             memberType: "",
-            isTop: false,
             isShowIconDialog: false,
             isLoading: false,
             message: "",
@@ -155,7 +145,6 @@ export default {
 
             const requestData = {
                 name: this.memberName,
-                isTop: this.isTop,
                 iconName: this.iconName,
                 memberType: this.memberType,
                 introduction: this.memberIntroduction
@@ -198,7 +187,6 @@ export default {
         },
         resetData() {
             this.memberName = "";
-            this.isTop = false;
             this.iconName = "";
             this.memberType = "";
             this.memberIntroduction = "";
@@ -211,6 +199,13 @@ export default {
 .addMember {
     max-width: 600px;
     margin: auto;
+}
+
+.addMember__title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+    background-color: #f7ebd7;
 }
 
 .addMember__selectIcon {
@@ -248,12 +243,6 @@ export default {
     &:hover {
         background-color: rgba(0, 0, 0, 0.3);
     }
-}
-
-.nes-container.with-title > .addMember__title {
-    font-size: 24px;
-    margin-bottom: 30px;
-    background-color: #f7ebd7;
 }
 
 .addMember__formItem {
