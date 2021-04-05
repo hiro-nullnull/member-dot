@@ -45,10 +45,68 @@
         >
             <div class="editMember__editDialogBody">
                 <vc-member-icon
-                    :icon-number="selectedMember.icon_name"
+                    class="editMember__editDialogIcon"
+                    @click="isShowIconDialog = true"
+                    :icon-number="iconName"
+                    :scale-size="5"
                 ></vc-member-icon>
 
-                <div v-if="!isEdited" class="editMember__editDialogBodyButtons">
+                <div class="nes-field editMember__dialogItem">
+                    <label class="editMember__dialogItemLabel" for="memberName">
+                        なまえ
+                    </label>
+                    <input
+                        v-model="memberName"
+                        id="memberName"
+                        class="nes-input"
+                        type="text"
+                        name="memberName"
+                        maxlength="20"
+                    />
+                </div>
+
+                <div class="nes-field editMember__dialogItem">
+                    <label
+                        class="editMember__dialogItemLabel"
+                        for="memberIntroduction"
+                        >せつめい
+                    </label>
+                    <textarea
+                        v-model="memberIntroduction"
+                        id="memberIntroduction"
+                        class="nes-textarea"
+                        name="memberIntroduction"
+                    ></textarea>
+                </div>
+
+                <div class="editMember__dialogItem">
+                    <label
+                        class="editMember__dialogItemLabel"
+                        for="default_select"
+                        >ぶんるい
+                    </label>
+                    <div class="nes-select">
+                        <select
+                            v-model="memberType"
+                            required
+                            id="default_select"
+                        >
+                            <option value="" disabled selected hidden
+                                >えらぶのだ. . .
+                            </option>
+                            <option
+                                v-for="(typeValue,
+                                typeKey,
+                                index) in columnTitles"
+                                :value="typeKey"
+                                :key="index"
+                                >{{ typeValue }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="editMember__editDialogBodyButtons">
                     <button
                         @click="isShowEditDialog = false"
                         type="button"
@@ -65,13 +123,37 @@
                     </button>
                 </div>
 
-                <p class="editMember__editDialogMessage nes-text is-error">
+                <p
+                    :class="[
+                        'editMember__editDialogMessage nes-text',
+                        { 'is-error': isError, 'is-primary': !isError }
+                    ]"
+                >
                     {{ message }}
                 </p>
             </div>
         </div>
 
         <!-- アイコン選択ダイアログ -->
+        <div
+            v-if="isShowIconDialog"
+            class="editMember__iconDialog"
+            @click="closeIconDialogOutsideBody"
+            data-icon-dialog-background
+        >
+            <div class="editMember__iconDialogBody">
+                <template v-for="(number, index) in 30" :key="index">
+                    <div
+                        class="editMember__iconDialogIconBox"
+                        @click="selectIcon(number)"
+                    >
+                        <vc-member-icon
+                            :icon-number="replaceIconNumber(number)"
+                        ></vc-member-icon>
+                    </div>
+                </template>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -92,14 +174,25 @@ export default {
                 outsourcing: "がいぶいたく"
             },
             selectedMember: null,
+            iconName: "",
+            memberName: "",
+            memberIntroduction: "",
+            memberType: "",
             message: "",
             isShowEditDialog: false,
-            isEdited: false
+            isShowIconDialog: false,
+            isError: false
         };
     },
     methods: {
         openDialog(member) {
             this.selectedMember = member;
+            this.iconName = member.icon_name;
+            this.memberName = member.name;
+            this.memberIntroduction = member.introduction;
+            this.memberType = member.member_type;
+            this.message = "";
+            this.isError = false;
             this.isShowEditDialog = true;
         },
         editMember() {
@@ -107,11 +200,35 @@ export default {
                 window.location.origin + "/member-management/web-api/edit";
             const requestParams = {
                 memberId: this.selectedMember.id,
-                name: this.selectedMember.name,
-                iconName: this.selectedMember.icon_name,
-                introduction: this.selectedMember.introduction
+                name: this.memberName,
+                iconName: this.iconName,
+                introduction: this.memberIntroduction,
+                memberType: this.memberType
             };
-            this.axios.put(url, requestParams);
+            this.axios.put(url, requestParams).then(res => {
+                this.message = res.data.data.message;
+
+                if (res.data.status === 0) {
+                    Object.keys(
+                        this.displayMemberList[this.memberType]
+                    ).forEach(key => {
+                        if (
+                            this.displayMemberList[this.memberType][key].id ===
+                            this.selectedMember.id
+                        ) {
+                            this.displayMemberList[this.memberType][key] = {
+                                id: this.selectedMember.id,
+                                name: this.memberName,
+                                icon_name: this.iconName,
+                                introduction: this.memberIntroduction,
+                                member_type: this.memberType
+                            };
+                        }
+                    });
+                } else {
+                    this.isError = true;
+                }
+            });
         },
         closeEditDialogOutsideBody(event) {
             const dialogBackground = document.querySelector(
@@ -120,6 +237,21 @@ export default {
             if (event.target === dialogBackground) {
                 this.isShowEditDialog = false;
             }
+        },
+        closeIconDialogOutsideBody(event) {
+            const dialogBackground = document.querySelector(
+                "[data-icon-dialog-background]"
+            );
+            if (event.target === dialogBackground) {
+                this.isShowIconDialog = false;
+            }
+        },
+        replaceIconNumber(number) {
+            return ("000" + number).slice(-3);
+        },
+        selectIcon(number) {
+            this.iconName = this.replaceIconNumber(number);
+            this.isShowIconDialog = false;
         }
     }
 };
@@ -185,7 +317,7 @@ export default {
     }
 }
 
-.editMember__editDialog {
+%dialog {
     position: fixed;
     top: 0;
     left: 0;
@@ -195,22 +327,41 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
 }
 
-.editMember__editDialogBody {
+%dialogBody {
     display: flex;
     flex-direction: column;
     background-color: white;
-    min-width: 300px;
+    width: 100%;
     padding: 24px;
     text-align: center;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-.editMember__editDialogBodyTitle {
+.editMember__editDialog {
+    @extend %dialog;
+    z-index: 10;
+}
+
+.editMember__editDialogBody {
+    @extend %dialogBody;
+    max-width: 600px;
+}
+
+.editMember__dialogItem {
+    margin-bottom: 24px;
+}
+
+.editMember__dialogItemLabel {
     font-size: 18px;
-    margin-bottom: 32px;
+    margin-bottom: 18px;
+    text-align: left;
+    width: 100%;
+}
+
+.editMember__editDialogIcon {
+    margin: 16px 0 40px;
 }
 
 .editMember__editDialogBodyButtons {
@@ -218,7 +369,8 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 18px;
+    margin: 0 auto 18px;
+    max-width: 300px;
 
     button {
         margin: 0 24px;
@@ -227,5 +379,25 @@ export default {
 
 .editMember__editDialogMessage {
     font-size: 18px;
+}
+
+.editMember__iconDialog {
+    @extend %dialog;
+    z-index: 20;
+}
+
+.editMember__iconDialogBody {
+    @extend %dialogBody;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 600px;
+}
+
+.editMember__iconDialogIconBox {
+    margin: 8px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
 }
 </style>

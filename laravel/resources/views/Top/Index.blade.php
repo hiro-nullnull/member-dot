@@ -2,7 +2,7 @@
 
 @section('body')
     <main class="topPage">
-        <p class="topPage__icon"><i class="nes-octocat animate"></i></p>
+        <vc-top-icon class="topPage__icon"></vc-top-icon>
         <h1>ゆかい な なかま たち</h1>
 
         {{-- メンバーリスト --}}
@@ -10,7 +10,6 @@
             <h2><i class="nes-icon coin is-large"></i>しょうかい</h2>
 
             <ul>
-                {{-- 12~ からはインターン --}}
                 @foreach($memberList as $key => $values)
                     @if (count($values) > 0)
                         <li class="topPageMemberList_column nes-container with-title">

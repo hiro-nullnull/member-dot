@@ -23,7 +23,6 @@
 
     @if(env('APP_ENV') !== 'local')
         <link rel="stylesheet" href="assets/vue/css/app.css">
-        </link>
     @endif
 </head>
 

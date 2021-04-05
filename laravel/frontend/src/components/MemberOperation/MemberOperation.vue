@@ -69,7 +69,7 @@ export default {
                 edit: "かえる",
                 delete: "けす"
             },
-            selectedOperation: "edit"
+            selectedOperation: "add"
         };
     }
 };

@@ -53,6 +53,7 @@
                     class="nes-input"
                     type="text"
                     name="memberName"
+                    maxlength="20"
                 />
             </div>
 
@@ -209,6 +210,8 @@ export default {
 }
 
 .addMember__selectIcon {
+    margin-top: 16px;
+
     button {
         display: block;
         margin: 50px auto 0;
