@@ -1,7 +1,24 @@
 <template>
     <!-- パスワード入力画面 -->
-    <div>
-        えらばれしものかしょうめいしなさい
+    <div class="memberOperationAuthorizeDialog">
+        <div class="memberOperationAuthorizeDialog__body">
+            <div>
+                <div class="nes-field addMember__formItem">
+                    <label class="addMember__formItemLabel" for="memberName">
+                        なまえ
+                    </label>
+                    <input
+                        v-model="authorizePassword"
+                        id="memberName"
+                        class="nes-input"
+                        type="text"
+                        name="memberName"
+                        maxlength="20"
+                    />
+                </div>
+                <button type="button" class="nes-btn is-primary">入力</button>
+            </div>
+        </div>
     </div>
 
     <!-- 操作選択 -->
@@ -69,7 +86,9 @@ export default {
                 edit: "かえる",
                 delete: "けす"
             },
-            selectedOperation: "add"
+            selectedOperation: "add",
+            isAuthorized: false,
+            authorizePassword: ""
         };
     }
 };
