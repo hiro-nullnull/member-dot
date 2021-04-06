@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Top;
 
 use App\Http\Controllers\Controller;
 use App\Http\Model\Entity\Member;
-use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {

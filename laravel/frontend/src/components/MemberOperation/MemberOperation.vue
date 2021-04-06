@@ -1,26 +1,4 @@
 <template>
-    <!-- パスワード入力画面 -->
-    <div class="memberOperationAuthorizeDialog">
-        <div class="memberOperationAuthorizeDialog__body">
-            <div>
-                <div class="nes-field addMember__formItem">
-                    <label class="addMember__formItemLabel" for="memberName">
-                        なまえ
-                    </label>
-                    <input
-                        v-model="authorizePassword"
-                        id="memberName"
-                        class="nes-input"
-                        type="text"
-                        name="memberName"
-                        maxlength="20"
-                    />
-                </div>
-                <button type="button" class="nes-btn is-primary">入力</button>
-            </div>
-        </div>
-    </div>
-
     <!-- 操作選択 -->
     <section class="memberOperationListContainer">
         <!-- ふやす -->
@@ -73,10 +51,6 @@ export default {
         memberList: {
             type: Object,
             default: () => {}
-        },
-        password: {
-            type: String,
-            default: ""
         }
     },
     data() {
@@ -86,15 +60,35 @@ export default {
                 edit: "かえる",
                 delete: "けす"
             },
-            selectedOperation: "add",
-            isAuthorized: false,
-            authorizePassword: ""
+            selectedOperation: "add"
         };
     }
 };
 </script>
 
 <style lang="scss" scoped>
+.memberOperationAuthorizeDialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.memberOperationAuthorizeDialog__body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    max-width: 600px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
 .memberOperationListContainer {
     text-align: center;
     margin-bottom: 60px;

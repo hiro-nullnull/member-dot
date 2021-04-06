@@ -12,7 +12,7 @@ MySQLにログイン
 
 `docker-compose exec mysql mysql -u root -p welcome`
 
-dockerのイメージやボリュームを全て破棄
+【超危険】dockerのイメージやボリュームを全て破棄
 
 `docker-compose down --rmi all --volumes --remove-orphans`
 
@@ -29,5 +29,7 @@ ERROR: error while removing network: network docker-vue_default
 全てのmigrateを戻す
 
 `php artisan migrate:reset`
+
+指定のステップまでmigrate実行状態を戻す
 
 `php artisan migrate:rollback --step=${ステップ番号}`

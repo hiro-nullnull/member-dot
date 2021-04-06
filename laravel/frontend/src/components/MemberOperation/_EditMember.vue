@@ -44,93 +44,95 @@
             data-dialog-background
         >
             <div class="editMember__editDialogBody">
-                <vc-member-icon
-                    class="editMember__editDialogIcon"
-                    @click="isShowIconDialog = true"
-                    :icon-number="iconName"
-                    :scale-size="5"
-                ></vc-member-icon>
+                <form>
+                    <vc-member-icon
+                        class="editMember__editDialogIcon"
+                        @click="isShowIconDialog = true"
+                        :icon-number="iconName"
+                        :scale-size="5"
+                    ></vc-member-icon>
 
-                <div class="nes-field editMember__dialogItem">
-                    <label class="editMember__dialogItemLabel" for="memberName">
-                        なまえ
-                    </label>
-                    <input
-                        v-model="memberName"
-                        id="memberName"
-                        class="nes-input"
-                        type="text"
-                        name="memberName"
-                        maxlength="20"
-                    />
-                </div>
-
-                <div class="nes-field editMember__dialogItem">
-                    <label
-                        class="editMember__dialogItemLabel"
-                        for="memberIntroduction"
-                        >せつめい
-                    </label>
-                    <textarea
-                        v-model="memberIntroduction"
-                        id="memberIntroduction"
-                        class="nes-textarea"
-                        name="memberIntroduction"
-                    ></textarea>
-                </div>
-
-                <div class="editMember__dialogItem">
-                    <label
-                        class="editMember__dialogItemLabel"
-                        for="default_select"
-                        >ぶんるい
-                    </label>
-                    <div class="nes-select">
-                        <select
-                            v-model="memberType"
-                            required
-                            id="default_select"
-                        >
-                            <option value="" disabled selected hidden
-                                >えらぶのだ. . .
-                            </option>
-                            <option
-                                v-for="(typeValue,
-                                typeKey,
-                                index) in columnTitles"
-                                :value="typeKey"
-                                :key="index"
-                                >{{ typeValue }}
-                            </option>
-                        </select>
+                    <div class="nes-field editMember__dialogItem">
+                        <label class="editMember__dialogItemLabel" for="memberName">
+                            なまえ
+                        </label>
+                        <input
+                            v-model="memberName"
+                            id="memberName"
+                            class="nes-input"
+                            type="text"
+                            name="memberName"
+                            maxlength="20"
+                        />
                     </div>
-                </div>
 
-                <div class="editMember__editDialogBodyButtons">
-                    <button
-                        @click="isShowEditDialog = false"
-                        type="button"
-                        class="nes-btn"
-                    >
-                        やめる
-                    </button>
-                    <button
-                        @click="editMember()"
-                        type="button"
-                        class="nes-btn is-primary"
-                    >
-                        かえる
-                    </button>
-                </div>
+                    <div class="nes-field editMember__dialogItem">
+                        <label
+                            class="editMember__dialogItemLabel"
+                            for="memberIntroduction"
+                            >せつめい
+                        </label>
+                        <textarea
+                            v-model="memberIntroduction"
+                            id="memberIntroduction"
+                            class="nes-textarea"
+                            name="memberIntroduction"
+                        ></textarea>
+                    </div>
 
-                <p
-                    :class="[
-                        'editMember__editDialogMessage nes-text',
-                        { 'is-error': isError, 'is-primary': !isError }
-                    ]"
-                >
-                    {{ message }}
-                </p>
+                    <div class="editMember__dialogItem">
+                        <label
+                            class="editMember__dialogItemLabel"
+                            for="default_select"
+                            >ぶんるい
+                        </label>
+                        <div class="nes-select">
+                            <select
+                                v-model="memberType"
+                                required
+                                id="default_select"
+                            >
+                                <option value="" disabled selected hidden
+                                    >えらぶのだ. . .
+                                </option>
+                                <option
+                                    v-for="(typeValue,
+                                    typeKey,
+                                    index) in columnTitles"
+                                    :value="typeKey"
+                                    :key="index"
+                                    >{{ typeValue }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="editMember__editDialogBodyButtons">
+                        <button
+                            @click="isShowEditDialog = false"
+                            type="button"
+                            class="nes-btn"
+                        >
+                            やめる
+                        </button>
+                        <button
+                            @click="editMember()"
+                            type="button"
+                            class="nes-btn is-primary"
+                        >
+                            かえる
+                        </button>
+                    </div>
+
+                    <p
+                        :class="[
+                            'editMember__editDialogMessage nes-text',
+                            { 'is-error': isError, 'is-primary': !isError }
+                        ]"
+                    >
+                        {{ message }}
+                    </p>
+                </form>
             </div>
         </div>
 

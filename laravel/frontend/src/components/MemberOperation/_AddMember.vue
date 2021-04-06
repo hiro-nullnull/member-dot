@@ -2,7 +2,7 @@
     <div class="addMember">
         <h2 class="addMember__title">ひと ふやす</h2>
 
-        <div class="nes-container with-title">
+        <form class="nes-container with-title">
             <!-- アイコン選択 -->
             <div class="addMember__formItem addMember__selectIcon">
                 <!-- 選択したアイコンを表示する領域 -->
@@ -115,7 +115,7 @@
             >
                 {{ message }}
             </p>
-        </div>
+        </form>
     </div>
 </template>
 
