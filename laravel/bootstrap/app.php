@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->loadEnvironmentFrom('.env.' . ((getenv("APP_ENV") ? getenv("APP_ENV") : "local")));
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
