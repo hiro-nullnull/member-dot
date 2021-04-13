@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  app:
+  member-dot-app:
     build: ./infra/app
     volumes:
       - ./laravel:/work
@@ -17,12 +17,11 @@ services:
 
   nginx:
     # nginxの公式イメージ（偶数が安定バージョンらしい）
-    image: nginx:1.18-alpine
+    build: ./infra/nginx/local
     ports:
       - 10080:80
     volumes:
       - ./laravel:/work
-      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
     working_dir: /work
 
   # 公式イメージをそのまま利用

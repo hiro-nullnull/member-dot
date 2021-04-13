@@ -1,0 +1,30 @@
+#apiVersion: v1
+#kind: Pod
+#metadata:
+#  name: member-dot-app
+#spec:
+#  containers:
+#    - name: member-dot-app
+#      image: gcr.io/dotted-banner-310113/member-dot-app:v3
+#      ports:
+#        - containerPort: 9000
+#      env:
+#        - name: APP_ENV
+#          value: "prod"
+#    - name: member-dot-nginx
+#      image: gcr.io/dotted-banner-310113/member-dot-nginx:v4
+#      ports:
+#        - containerPort: 80
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: member-dot-service
+#spec:
+#  ports:
+#    - port: 8080
+#      protocol: TCP
+#      targetPort: 80
+#  type: NodePort
+#status:
+#  loadBalancer: {}
