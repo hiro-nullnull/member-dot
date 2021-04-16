@@ -2,7 +2,9 @@
 
 @section('body')
     <div class="memberManagement">
-        <p class="topPage__icon"><i class="nes-octocat animate"></i></p>
+        <p class="topPage__icon">
+            <a href="/"><i class="nes-octocat animate"></i></a>
+        </p>
         <h1>？？？ が なかま に なりたそう に こちら を みている</h1>
 
         <section>
