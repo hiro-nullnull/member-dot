@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   member-dot-app:
-    build: ./infra/app
+    build: ./infra/app/local
     volumes:
       - ./laravel:/work
     ports:
