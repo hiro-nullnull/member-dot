@@ -33,3 +33,7 @@ ERROR: error while removing network: network docker-vue_default
 指定のステップまでmigrate実行状態を戻す
 
 `php artisan migrate:rollback --step=${ステップ番号}`
+
+`seeder込みのマイグレーション実行`
+
+php artisan migrate:refresh --seed

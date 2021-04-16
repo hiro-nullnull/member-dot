@@ -11,8 +11,8 @@ services:
       - DB_CONNECTION=mysql
       - DB_HOST=mysql
       - DB_PORT=3306
-      - DB_DATABASE=${DB_NAME:-welcome}
-      - DB_USERNAME=${DB_USER:-welcomeuser}
+      - DB_DATABASE=${DB_NAME:-member_dot}
+      - DB_USERNAME=${DB_USER:-memberdotuser}
       - DB_PASSWORD=${DB_PASS:-adminpassword}
 
   nginx:
@@ -32,8 +32,8 @@ services:
     ports:
       - 3306:3306
     environment:
-      - MYSQL_DATABASE=${DB_NAME:-welcome}
-      - MYSQL_USER=${DB_USER:-welcomeuser}
+      - MYSQL_DATABASE=${DB_NAME:-member_dot}
+      - MYSQL_USER=${DB_USER:-memberdotuser}
       - MYSQL_PASSWORD=${DB_PASS:-adminpassword}
       - MYSQL_ROOT_PASSWORD=${DB_PASS:-adminpassword}
 

@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: member-dot-v5
+spec:
+  selector:
+    matchLabels:
+      app: member-dot
+  template:
+    metadata:
+      labels:
+        app: member-dot
+    spec:
+      containers:
+        - name: member-dot-app
+          image: gcr.io/dotted-banner-310113/member-dot-app:v4
+          ports:
+            - containerPort: 9000
+          env:
+            - name: APP_ENV
+              value: "prod"
+            - name: DB_CONNECTION
+              value: "mysql"
+            - name: DB_HOST
+              value: "0.0.0.0"
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: member-dot-sql-credential
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: member-dot-sql-credential
+                  key: password
+            - name: DB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: member-dot-sql-credential
+                  key: database
+        - name: member-dot-nginx
+          image: gcr.io/dotted-banner-310113/member-dot-nginx:v7
+          ports:
+            - containerPort: 80
+        - name: cloud-sql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.17
+          command: [
+              "/cloud_sql_proxy",
+              "-instances=dotted-banner-310113:asia-northeast1:member-dot-db=tcp:0.0.0.0:3306",
+              "-credential_file=/secrets/service_account.json"
+          ]
+          securityContext:
+            runAsNonRoot: true
+          volumeMounts:
+            - name: member-dot-gsa-key
+              mountPath: /secrets/
+              readOnly: true
+      volumes:
+        - name: member-dot-gsa-key
+          secret:
+            secretName: member-dot-gsa-key
