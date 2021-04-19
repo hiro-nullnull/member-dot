@@ -304,6 +304,10 @@ export default {
 
 .editMember__dialogItem {
   margin-bottom: 24px;
+
+  textarea {
+    min-height: 100px;
+  }
 }
 
 .editMember__dialogItemLabel {

@@ -91,7 +91,7 @@
             'addMember__submitButton nes-btn is-primary',
             { 'is-disabled': isLoading }
           ]"
-          type="submit"
+          type="button"
           @click="onClickSubmit()"
         >
           ふやす

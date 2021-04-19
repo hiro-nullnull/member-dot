@@ -102,6 +102,18 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
                 'deleted_at' => null,
+            ],
+            [
+                'id' => null,
+                'name' => 'ふいーらんすのひと００３',
+                'icon_name' => '008',
+                'member_type' => 'outsourcing',
+                'introduction' => "吾輩は猫である。\n
+猫だって言われるから、なんと言われようと猫である。
+                ",
+                'created_at' => now(),
+                'updated_at' => now(),
+                'deleted_at' => null,
             ]
         ];
 

@@ -19,9 +19,10 @@
         ></vc-member-icon>
       </div>
       <p class="memberCardDialog__memberName">{{ memberName }}</p>
-      <p class="memberCardDialog__memberIntroduction">
-        {{ memberIntroduction }}
-      </p>
+      <p
+        class="memberCardDialog__memberIntroduction"
+        v-html="replaceIntroduction(memberIntroduction)"
+      ></p>
       <button
         @click="closeDialogInContainer()"
         type="button"
@@ -71,6 +72,9 @@ export default {
     closeDialogInContainer() {
       document.getElementById("body").style.overflow = "scroll";
       this.isShowDialog = false;
+    },
+    replaceIntroduction(text) {
+      return text.replace(/\n/g, "<br>");
     }
   }
 };
