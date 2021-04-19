@@ -116,10 +116,15 @@ GKEのデプロイは下記ステップでやりました。
 dockerコンテナのビルド
 ```
 Dockerfileがある場所に移動して実行
-docker build -t gcr.io/${PROJECT_ID}/${コンテナ名}:v1 .
+docker build -t gcr.io/${プロジェクトID}/${コンテナ名}:v1 .
 
 Dockerfileを指定したい場合は-fオプションをつける
-docker build -t gcr.io/${PROJECT_ID}/${コンテナ名}:v1 -f infra/app/prod/Dockerfile .
+docker build -t gcr.io/${プロジェクトID}/${コンテナ名}:v1 -f infra/app/prod/Dockerfile .
+```
+
+GCRへのアップロード
+```
+docker push gcr.io/${プロジェクトID}/${コンテナ名}:v1
 ```
 
 デプロイコマンド
@@ -133,6 +138,12 @@ kubectl apply -f ${対象のマニフェストファイル}.yml
 Pod一覧
 ```
 kubectl get pods
+```
+
+ログ確認
+```
+複数のコンテナで構成されるPodは下記で特定のコンテナのログが見れる
+kubectl logs ${Pod名} -c ${コンテナ名}
 ```
 
 Pod内のコンテナにログイン
